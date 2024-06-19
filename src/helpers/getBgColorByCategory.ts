@@ -1,4 +1,4 @@
-const getBgColorByCategory = (category: string) => {
+const getBgColorByCategory = (category: string): string => {
   // Remove white spaces, apostrophe
   const strippedCategory = category
     .replace(" ", "")

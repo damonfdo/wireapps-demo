@@ -4,19 +4,23 @@ import { useFetchProducts } from "../hooks/useFetchProducts";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import ProductCard from "../components/ProductCard";
+import SectionTitle from "../components/SectionTitle";
+import getCategoryNameBySlug from "../helpers/getCategoryNameBySlug";
 
 const Category: React.FC = () => {
   const { name } = useParams();
   const { products, loading, error } = useFetchProducts(name);
+
   if (loading) {
     return <Loading />;
   }
   if (error) {
     return <Error />;
   }
+  const category = getCategoryNameBySlug(name || "");
   return (
-    <div>
-      {name}
+    <div className="container flex flex-col gap-8 my-12">
+      <SectionTitle name={category} />
       <div className="grid grid-cols-4 gap-4">
         {products.map((product) => (
           <ProductCard key={product.id} {...product} />
