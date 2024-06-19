@@ -1,31 +1,26 @@
-import React from "react";
-import ProductCard from "./components/ProductCard";
-import CategoryTile from "./components/CategoryTile";
-import { useFetchProducts } from "./hooks/useFetchProducts";
+import React, { Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import Header from "./components/Header";
+import Loading from "./components/Loading";
+
+const HomePage = React.lazy(() => import("./pages/Home"));
+const CategoryPage = React.lazy(() => import("./pages/Category"));
 
 function App() {
-  const { products } = useFetchProducts();
   return (
-    <>
-      <h1 className="text-5xl font-bold underline">Hello world!</h1>
-      {products.map((product) => (
-        <ProductCard key={product.id} {...product} />
-      ))}
-      {categories.map((category) => (
-        <CategoryTile key={category.slug} {...category} />
-      ))}
-    </>
+    <BrowserRouter>
+      <Suspense fallback={<Loading />}>
+        <Header />
+        <main className="container mx-auto p-4">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/category/:name" element={<CategoryPage />} />
+          </Routes>
+        </main>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
-const categories = [
-  {
-    name: "Men's Clothing",
-    slug: "men's clothing",
-  },
-  {
-    name: "Women's Clothing",
-    slug: "women's clothing",
-  },
-];
 export default App;
