@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "./components/ProductCard";
+import CategoryTile from "./components/CategoryTile";
 
 function App() {
   return (
@@ -7,6 +8,9 @@ function App() {
       <h1 className="text-5xl font-bold underline">Hello world!</h1>
       {dummyProduct.map((product) => (
         <ProductCard key={product.id} {...product} />
+      ))}
+      {categories.map((category) => (
+        <CategoryTile key={category.slug} {...category} />
       ))}
     </>
   );
@@ -37,6 +41,17 @@ const dummyProduct = [
       rate: 3.9,
       count: 120,
     },
+  },
+];
+
+const categories = [
+  {
+    name: "Men's Clothing",
+    slug: "men's clothing",
+  },
+  {
+    name: "Women's Clothing",
+    slug: "women's clothing",
   },
 ];
 export default App;
