@@ -17,7 +17,7 @@ const ProductCard: React.FC<Product> = ({
   const bgColor = getBgColorByCategory(category);
   return (
     <div
-      className="flex flex-col  justify-between max-w-sm h-[35rem] mx-auto bg-white shadow-lg rounded-[1rem] border cursor-pointer "
+      className="flex flex-col  justify-between max-w-sm h-[35rem] mx-auto bg-white container-shadow rounded-[1rem] border cursor-pointer "
       onClick={handleClick}
     >
       <div className="px-4 py-2">

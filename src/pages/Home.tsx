@@ -8,7 +8,7 @@ import CategoryTile from "../components/CategoryTile";
 import SectionTitle from "../components/SectionTitle";
 
 const Home: React.FC = () => {
-  const { products, error, loading } = useFetchProducts();
+  const { products, error, loading } = useFetchProducts(undefined, 4);
   if (error) {
     return <Error />;
   }
@@ -19,7 +19,7 @@ const Home: React.FC = () => {
     <div className="container flex flex-col gap-8 my-12">
       <section id="flashSale" className="flex flex-col gap-8 ">
         <SectionTitle name="Flash Sale" />
-        <div className="overflow-x-auto">
+        {/* <div className="overflow-x-auto">
           <div className="flex flex-row flex-nowrap space-x-4">
             {products.map((product) => (
               <div className="w-1/4 min-w-[25%]" key={product.id}>
@@ -27,11 +27,11 @@ const Home: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
       <section id="categories" className="flex flex-col gap-8">
         <SectionTitle name="Categories" />
-        <div className="flex flex-row justify-between gap-4 w-[100%]">
+        <div className="flex flex-col md:flex-row justify-between gap-4 w-[100%]">
           {CATEGORIES.map((category) => (
             <CategoryTile key={category.slug} {...category} />
           ))}
