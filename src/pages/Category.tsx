@@ -21,9 +21,9 @@ const Category: React.FC = () => {
   return (
     <div className="container flex flex-col gap-8 my-12">
       <SectionTitle name={category} />
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCard {...product} key={product.id} />
         ))}
       </div>
     </div>

@@ -9,3 +9,13 @@
 .container-shadow {
   box-shadow: 10px 15px 20px 0px #00000026;
 }
+
+/* Chrome, Safari  */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Edge, Firefox  */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
