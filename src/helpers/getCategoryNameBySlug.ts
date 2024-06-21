@@ -1,4 +1,4 @@
-import { CATEGORIES } from "../assets/constants/categories";
+import { CATEGORIES } from "../constants/categories";
 
 const getCategoryNameBySlug = (category: string): string => {
   const activeCategory = CATEGORIES.find(({ slug }) => slug === category);
